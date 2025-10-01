@@ -3,6 +3,8 @@ import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
 import ProductCard from '../components/ProductCard';
 import Cart from '../components/Cart';
+import DemoProducts from '../components/DemoProducts';
+import Footer from '../components/Footer';
 
 const Home = () => {
   const { user } = useContext(AuthContext);
@@ -67,7 +69,7 @@ const Home = () => {
       <h1 style={{ marginTop: '2rem', color: '#2c3e50' }}>Fresh Fish Available</h1>
       
       {products.length === 0 ? (
-        <p>No products available at the moment.</p>
+        <p></p> // No products available at the moment.
       ) : (
         <div className="products-grid">
           {products.map((product) => (
@@ -83,6 +85,8 @@ const Home = () => {
       {user && user.role === 'customer' && (
         <Cart cart={cart} setCart={setCart} user={user} />
       )}
+      <DemoProducts/>
+      <Footer/>
     </div>
   );
 };
